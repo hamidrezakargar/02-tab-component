@@ -21,7 +21,7 @@ const tabData = [
 function App() {
   const [activeTab, setActiveTab] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   const handleActiveTab = (id) => {
     setActiveTab(id)
@@ -36,29 +36,29 @@ function App() {
       <button onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
-{isOpen ? (
+      {isOpen ? (
         <div className="tab">
-        <div className="tab__header">
-          {
-            tabData.map((tab) => (
-              <button
-                onClick={() => handleActiveTab(tab.id)}
-                key={tab.id}
-                className={activeTab == tab.id ? "active" : ""}>
-                <span>{tab.title}</span>
-                <span className="tab-indicator"></span>
-              </button>
-            ))
-          }
+          <div className="tab__header">
+            {
+              tabData.map((tab) => (
+                <button
+                  onClick={() => handleActiveTab(tab.id)}
+                  key={tab.id}
+                  className={activeTab == tab.id ? "active" : ""}>
+                  <span>{tab.title}</span>
+                  <span className="tab-indicator"></span>
+                </button>
+              ))
+            }
 
+          </div>
+          <div className="tab__content">
+            {tabData[activeTab - 1].content} - {count}
+          </div>
         </div>
-        <div className="tab__content">
-          {tabData[activeTab - 1].content} - {count}
-        </div>
-      </div>
-) : (
-  <p>"closede..."</p>
-)}
+      ) : (
+        <p>"closede..."</p>
+      )}
     </div>
   )
 }
