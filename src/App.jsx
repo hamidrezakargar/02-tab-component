@@ -21,16 +21,19 @@ const tabData = [
 function App() {
   const [activeTab, setActiveTab] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
+  const [count,setCount] = useState(0);
 
   const handleActiveTab = (id) => {
-    // console.log({id});
     setActiveTab(id)
+    setCount((c) => c + 1);
+    setCount((c) => c + 1);
+
 
   };
 
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)}>
+      <button onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
 {isOpen ? (
@@ -50,7 +53,7 @@ function App() {
 
         </div>
         <div className="tab__content">
-          {tabData[activeTab - 1].content}
+          {tabData[activeTab - 1].content} - {count}
         </div>
       </div>
 ) : (
